@@ -1,5 +1,7 @@
 import cors from "cors"
-import express, { Application, Request, Response } from "express"
+import express, { Application, NextFunction, Request, Response } from "express"
+import { HTTP, mainError } from "./error/mainError"
+import { errorHandler } from "./error/errorHandling"
 
 export const mainApp = (app : Application)=>{
     app.use(express.json())
@@ -16,5 +18,18 @@ export const mainApp = (app : Application)=>{
             })
         }
     })
+
+    app.all("*", (req : Request, res : Response, next : NextFunction) =>{
+        next(
+            new mainError({
+                message : "this error occured due to incorrect Router",
+                success : false,
+                status : HTTP.BAD_REQUEST,
+                name : "Router Error" 
+            })
+        )
+    })
+
+    app.use(errorHandler)
     
 }
