@@ -27,6 +27,10 @@ const roomModel = new mongoose.Schema<iRoom>({
     admin : {
         type : mongoose.Types.ObjectId,
         ref : "admins"
+    },
+    book:{
+        type : mongoose.Types.ObjectId,
+        ref : "books"
     }
 }, {timestamps : true})
 
