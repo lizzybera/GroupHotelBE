@@ -18,6 +18,12 @@ const roomModel = new mongoose.Schema<iRoom>({
     description : {
         type : String,
     },
+    roomPics : {
+        type : String,
+    },
+    roomPicsID : {
+        type : String,
+    },
     amount : {
         type : Number
     },
