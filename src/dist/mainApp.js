@@ -10,6 +10,8 @@ const mainError_1 = require("./error/mainError");
 const errorHandling_1 = require("./error/errorHandling");
 const userRouter_1 = __importDefault(require("./router/userRouter"));
 const adminRouter_1 = __importDefault(require("./router/adminRouter"));
+const roomRouter_1 = __importDefault(require("./router/roomRouter"));
+const bookRouter_1 = __importDefault(require("./router/bookRouter"));
 const mainApp = (app) => {
     app.use(express_1.default.json());
     app.use((0, cors_1.default)());
@@ -27,6 +29,8 @@ const mainApp = (app) => {
     });
     app.use("/api/v1", userRouter_1.default);
     app.use("/api/v1", adminRouter_1.default);
+    app.use("/api/v1", roomRouter_1.default);
+    app.use("/api/v1", bookRouter_1.default);
     app.all("*", (req, res, next) => {
         next(new mainError_1.mainError({
             message: "this error occured due to incorrect Router",

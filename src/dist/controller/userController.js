@@ -20,16 +20,16 @@ const mainError_1 = require("../error/mainError");
 const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {
-        const { fullName, password, email, phoneNumber, city, } = req.body;
+        const { fullName, password, email, phoneNumber, } = req.body;
         const salt = yield bcrypt_1.default.genSalt(10);
         const hash = yield bcrypt_1.default.hash(password, salt);
         const { secure_url, public_id } = yield cloudinary_1.default.uploader.upload((_a = req.file) === null || _a === void 0 ? void 0 : _a.path);
+        // this is a comment
         const user = yield userModel_1.default.create({
             fullName,
             password: hash,
             email,
             phoneNumber,
-            city,
             avatar: secure_url,
             avatarUrl: public_id
         });

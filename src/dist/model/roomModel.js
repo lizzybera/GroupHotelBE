@@ -21,6 +21,12 @@ const roomModel = new mongoose_1.default.Schema({
     description: {
         type: String,
     },
+    roomPics: {
+        type: String,
+    },
+    roomPicsID: {
+        type: String,
+    },
     amount: {
         type: Number
     },
@@ -30,6 +36,10 @@ const roomModel = new mongoose_1.default.Schema({
     admin: {
         type: mongoose_1.default.Types.ObjectId,
         ref: "admins"
-    }
+    },
+    book: [{
+            type: mongoose_1.default.Types.ObjectId,
+            ref: "books"
+        }]
 }, { timestamps: true });
 exports.default = mongoose_1.default.model("rooms", roomModel);

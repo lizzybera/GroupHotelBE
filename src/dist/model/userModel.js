@@ -28,9 +28,6 @@ const userModel = new mongoose_1.default.Schema({
         type: Number,
         required: true,
     },
-    city: {
-        type: String,
-    },
     avatar: {
         type: String,
     },
