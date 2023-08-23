@@ -1,16 +1,6 @@
 import mongoose from "mongoose";
+import { iAdmin, iAdminData } from "../utils/interface";
 
-export interface iAdmin {
-    companyName : string,
-    companyEmail : string,
-    companyAddress : string,
-    passWord : string,
-    companyPhoneNo : number,
-    companyPics : string,
-    companyPicsID : string
-}
-
-export interface iAdminData extends iAdmin, mongoose.Document {}
 
 const adminModel = new mongoose.Schema<iAdmin>({
     companyName : {
