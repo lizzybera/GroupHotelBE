@@ -35,7 +35,6 @@ export const createUser = async (req: any, res: Response) => {
   } catch (error) {
     return res.status(HTTP.BAD_REQUEST).json({
       message: "error creating user",
-      data: error.message,
     });
   }
 };
@@ -64,7 +63,6 @@ export const signInUser = async (req: Request, res: Response) => {
   } catch (error) {
     return res.status(HTTP.BAD_REQUEST).json({
       message: "error signing in user",
-      data: error.message,
     });
   }
 };
@@ -85,7 +83,6 @@ export const updateUser = async (req: Request, res: Response) => {
   } catch (error) {
     return res.status(HTTP.BAD_REQUEST).json({
       message: "error updating user",
-      data: error.message,
     });
   }
 };
@@ -102,7 +99,6 @@ export const readAll =async(req: Request, res: Response)=>{
     } catch (error) {
         return res.status(HTTP.BAD_REQUEST).json({
             message:"error reading all users",
-            data:error.message
         })
     }
 }
@@ -118,7 +114,6 @@ export const readOneUser =async(req:Request, res:Response)=>{
     } catch (error) {
         return res.status(HTTP.BAD_REQUEST).json({
             message:"User not found",
-            data:error.message
         })
     }
 }
