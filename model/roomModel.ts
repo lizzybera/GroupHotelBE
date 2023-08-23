@@ -18,6 +18,12 @@ const roomModel = new mongoose.Schema<iRoom>({
     description : {
         type : String,
     },
+    roomPics : {
+        type : String,
+    },
+    roomPicsID : {
+        type : String,
+    },
     amount : {
         type : Number
     },
@@ -28,10 +34,10 @@ const roomModel = new mongoose.Schema<iRoom>({
         type : mongoose.Types.ObjectId,
         ref : "admins"
     },
-    book:{
+    book:[{
         type : mongoose.Types.ObjectId,
         ref : "books"
-    }
+    }]
 }, {timestamps : true})
 
 export default mongoose.model<iRoomData>("rooms", roomModel)

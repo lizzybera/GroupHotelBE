@@ -13,9 +13,10 @@ export const createBook = async (req: any, res: Response) => {
       time,
       userId,
     });
-const room:any =await roomModel.findById(roomId)
+    const room:any =await roomModel.findById(roomId)
     room?.book?.push(new mongoose.Types.ObjectId(booked._id!));
     room?.save();
+
 
     res.status(HTTP.OK).json({
       message: "booked successfully",

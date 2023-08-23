@@ -17,7 +17,7 @@ export const createRoom = async (req: any, res: Response) => {
         amount
     } = req.body;
 
-    const admin : any = await adminModel.find(adminID)    
+    const admin : any = await adminModel.findById(adminID)    
     
     const { secure_url, public_id } = await cloudinary.uploader.upload(
         req.file?.path
@@ -34,6 +34,7 @@ export const createRoom = async (req: any, res: Response) => {
             roomPics : secure_url,
             roomPicsID : public_id,
         });
+  
 
         admin?.room?.push(new mongoose.Types.ObjectId(roomed._id!))
         admin?.save()
@@ -66,18 +67,35 @@ export const viewRooms = async (req: Request, res: Response) => {
   }
 };
 
+export const updateRoom = async (req: Request, res: Response) => {
+  try {
+    const { roomID } = req.params;
+    
+    const room = await roomModel.findByIdAndUpdate(roomID, {isAvailable : true}, {new : true});
+
+    res.status(HTTP.OK).json({
+      message: "room updated",
+      data: room,
+    });
+  } catch (error : any) {
+    res.status(HTTP.BAD_REQUEST).json({
+      message: "Error updating room",
+    });
+  }
+};
+
 export const viewOneRoom = async (req: Request, res: Response) => {
   try {
     const { roomID } = req.params;
     const room = await roomModel.findById(roomID);
 
     res.status(HTTP.OK).json({
-      message: "viewing room",
+      message: "viewing one room",
       data: room,
     });
   } catch (error : any) {
     res.status(HTTP.BAD_REQUEST).json({
-      message: "Error viewing rooms",
+      message: "Error viewing one room",
     });
   }
 };

@@ -9,10 +9,10 @@ const bookModel = new mongoose.Schema<iBook>({
     userId:{
         type:String
     },
-    room:[{
+    room:{
         type:mongoose.Types.ObjectId,
         ref:"rooms"
-    }]
+    }
 },
 {timestamps:true}
 )

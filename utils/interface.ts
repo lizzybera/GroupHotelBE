@@ -34,13 +34,13 @@ export interface iAdmin {
     roomPics : string,
     roomPicsID : string,
     admin : {},
-    book:{}
+    book:[]
 }
 
 export interface iBook{
     time?:string,
     userId?:string
-    room?:{} [],
+    room?:{},
 }
 
 export interface iBookData extends iBook, mongoose.Document{}
