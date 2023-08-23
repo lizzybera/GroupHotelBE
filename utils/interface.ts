@@ -1,16 +1,5 @@
 import mongoose from "mongoose";
 
-interface iAuthor {
-    name? : string;
-    email? : string;
-    password? : string;
-    image? : string;
-    imageID? : string;
-}
-
-export interface iAuthorData extends iAuthor, mongoose.Document {}
-
-
 export interface iUser {
     fullName?: string;
     email?: string;
@@ -20,5 +9,18 @@ export interface iUser {
     avatar?: string;
     avatarUrl?: string;
   }
+
+
+export interface iAdmin {
+      companyName : string,
+      companyEmail : string,
+      companyAddress : string,
+      passWord : string,
+      companyPhoneNo : number,
+      companyPics : string,
+      companyPicsID : string
+  }
+  
+  export interface iAdminData extends iAdmin, mongoose.Document {}
   
   export interface iUserData extends iUser, mongoose.Document {}
