@@ -19,7 +19,7 @@ const server = app.listen(process.env.PORT || port, () => {
 process.on("uncaughtException", (error: any) => {
     console.log('uncaughtException', error)
 
-    process.exit(1);
+    process.exit(1)
 })
 
 process.on("uncaughtException", (reason:any) => { 
