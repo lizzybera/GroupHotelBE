@@ -1,10 +1,13 @@
 import express from "express";
 import { createUser, readAll, readOneUser, signInUser, updateUser } from "../controller/userController";
+import upload from "../config/multer"
 
 
 const router = express.Router();
-router.route("/createUser").post(createUser);
+router.route("/createUser").post(upload, createUser);
 router.route("/signInUser").post(signInUser)
-router.route("/ updateUser").post(updateUser)
+router.route("/:id/updateUser").post(updateUser)
 router.route("/readAll").post(readAll)
-router.route("/readOneUser").post(readOneUser)
+router.route("/:id/readOneUser").post(readOneUser)
+
+export default router
