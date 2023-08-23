@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import userModel from "../model/userModel";
 import bcrypt from "bcrypt";
-import cloudinary from "../Config/cloudinary";
+import cloudinary from "../config/cloudinary";
 import  {HTTP}  from "../error/mainError";
 
 export const createUser = async (req: any, res: Response) => {
