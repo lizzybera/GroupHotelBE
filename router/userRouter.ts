@@ -8,3 +8,5 @@ router.route("/signInUser").post(signInUser)
 router.route("/ updateUser").post(updateUser)
 router.route("/readAll").post(readAll)
 router.route("/readOneUser").post(readOneUser)
+
+export default router
