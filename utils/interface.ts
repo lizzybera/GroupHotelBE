@@ -4,7 +4,6 @@ export interface iUser {
     fullName?: string;
     email?: string;
     password?: string;
-    city?: string;
     phoneNumber?: number;
     avatar?: string;
     avatarUrl?: string;
@@ -33,8 +32,18 @@ export interface iAdmin {
     isAvailable : boolean,
     roomPics : string,
     roomPicsID : string,
-    admin : {}
+    admin : {},
+    book:[]
 }
+
+export interface iBook{
+    time?:string,
+    userId?:string
+    room?:{},
+}
+
+export interface iBookData extends iBook, mongoose.Document{}
+
 
   export interface iAdminData extends iAdmin, mongoose.Document {}
   

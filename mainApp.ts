@@ -5,6 +5,7 @@ import { errorHandler } from "./error/errorHandling"
 import user from "./router/userRouter"
 import admin from "./router/adminRouter"
 import room from "./router/roomRouter"
+import book from "./router/bookRouter"
 
 export const mainApp = (app : Application)=>{
     app.use(express.json())
@@ -25,6 +26,7 @@ export const mainApp = (app : Application)=>{
     app.use("/api/v1", user)
     app.use("/api/v1", admin)
     app.use("/api/v1", room)
+    app.use("/api/v1", book)
 
     app.all("*", (req : Request, res : Response, next : NextFunction) =>{
         next(

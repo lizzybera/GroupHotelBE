@@ -34,6 +34,7 @@ export const createRoom = async (req: any, res: Response) => {
             roomPics : secure_url,
             roomPicsID : public_id,
         });
+  
 
         admin?.room?.push(new mongoose.Types.ObjectId(roomed._id!))
         admin?.save()
