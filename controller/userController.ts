@@ -18,6 +18,8 @@ export const createUser = async (req: any, res: Response) => {
 
     const {secure_url, public_id} =await cloudinary.uploader.upload(req.file?.path)
 
+    // this is a comment
+
     const user = await userModel.create({
       fullName,
       password: hash,
