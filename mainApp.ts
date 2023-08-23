@@ -2,6 +2,8 @@ import cors from "cors"
 import express, { Application, NextFunction, Request, Response } from "express"
 import { HTTP, mainError } from "./error/mainError"
 import { errorHandler } from "./error/errorHandling"
+import user from "./router/userRouter"
+import admin from "./router/adminRouter"
 
 export const mainApp = (app : Application)=>{
     app.use(express.json())
@@ -18,6 +20,9 @@ export const mainApp = (app : Application)=>{
             })
         }
     })
+
+    app.use("/api/v1", user)
+    app.use("/api/v1", admin)
 
     app.all("*", (req : Request, res : Response, next : NextFunction) =>{
         next(

@@ -7,7 +7,7 @@ const router = express.Router();
 router.route("/createUser").post(upload, createUser);
 router.route("/signInUser").post(signInUser)
 router.route("/:id/updateUser").post(updateUser)
-router.route("/readAll").post(readAll)
-router.route("/:id/readOneUser").post(readOneUser)
+router.route("/readAll").get(readAll)
+router.route("/:id/readOneUser").get(readOneUser)
 
 export default router

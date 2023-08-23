@@ -18,9 +18,26 @@ export interface iAdmin {
       passWord : string,
       companyPhoneNo : number,
       companyPics : string,
-      companyPicsID : string
+      companyPicsID : string,
+    room : {} []
   }
   
+
+  export interface iRoom {
+    roomSize : string,
+    bedSize : string,
+    Guest : string,
+    roomType : string,
+    description : string,
+    amount : number,
+    isAvailable : boolean,
+    roomPics : string,
+    roomPicsID : string,
+    admin : {}
+}
+
   export interface iAdminData extends iAdmin, mongoose.Document {}
   
   export interface iUserData extends iUser, mongoose.Document {}
+
+  export interface iRoomData extends iRoom, mongoose.Document {}
