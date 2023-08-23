@@ -25,7 +25,20 @@ export const createBook = async (req: any, res: Response) => {
   } catch (error: any) {
     res.status(HTTP.BAD_REQUEST).json({
       message: "Error booking room",
-      data: error.message,
     });
   }
 };
+
+export  const viewBooking = async(req:Request, res:Response)=>{
+    try {
+       const booked =await bookModel.find() 
+       return res.status(200).json({
+        message:"success",
+        data:booked
+       })
+    } catch (error) {
+        res.status(HTTP.BAD_REQUEST).json({
+            message: "Error viewing booked room",
+          });
+    }
+}
