@@ -4,9 +4,6 @@ import { dbConnect } from "./config/db"
 import { mainApp } from "./mainApp"
 dotenv.config()
 
-
-
-
 const app: Application = express()
 mainApp(app)
 const port: number = parseInt(process.env.PORT!)
