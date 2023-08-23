@@ -23,18 +23,11 @@ const userModel = new mongoose.Schema<iUser>(
       type: String,
       required: true,
     },
-    confirmPassword: {
-      type: String,
-      required: true,
-    },
     phoneNumber: {
       type: Number,
       required: true,
     },
     city: {
-      type: String,
-    },
-    localGovernment: {
       type: String,
     },
     avatar: {
