@@ -26,6 +26,12 @@ const adminModel = new mongoose.Schema<iAdmin>({
     companyPicsID : {
         type : String
     },
-})
+    room : [
+        {
+            type : mongoose.Types.ObjectId,
+            ref : "rooms"
+        }
+    ]
+}, {timestamps : true})
 
 export default mongoose.model<iAdminData>("admins", adminModel)
