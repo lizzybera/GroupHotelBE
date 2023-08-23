@@ -27,9 +27,6 @@ const userModel = new mongoose.Schema<iUser>(
       type: Number,
       required: true,
     },
-    city: {
-      type: String,
-    },
     avatar: {
       type: String,
     },

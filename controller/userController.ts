@@ -11,7 +11,6 @@ export const createUser = async (req: any, res: Response) => {
       password,
       email,
       phoneNumber,
-      city,
     } = req.body;
 
     const salt:any = await bcrypt.genSalt(10);
@@ -24,7 +23,6 @@ export const createUser = async (req: any, res: Response) => {
       password: hash,
       email,
       phoneNumber,
-      city,
       avatar:secure_url,
       avatarUrl: public_id
     });
