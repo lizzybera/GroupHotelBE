@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.viewOneRoom = exports.updateRoom = exports.viewRooms = exports.createRoom = void 0;
+exports.viewOneRoom = exports.updateRoom = exports.viewAdminRooms = exports.viewRooms = exports.createRoom = void 0;
 const mainError_1 = require("../error/mainError");
 const roomModel_1 = __importDefault(require("../model/roomModel"));
 const cloudinary_1 = __importDefault(require("../config/cloudinary"));
@@ -66,6 +66,30 @@ const viewRooms = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.viewRooms = viewRooms;
+const viewAdminRooms = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { adminID } = req.params;
+        const admin = yield adminModel_1.default.findById(adminID).populate({
+            path: "room",
+            options: {
+                sort: {
+                    createdAt: -1,
+                },
+            },
+        });
+        res.status(201).json({
+            message: "admin's Room  ",
+            data: admin,
+        });
+    }
+    catch (error) {
+        res.status(404).json({
+            message: "Error Found",
+            data: error.message,
+        });
+    }
+});
+exports.viewAdminRooms = viewAdminRooms;
 const updateRoom = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { roomID } = req.params;

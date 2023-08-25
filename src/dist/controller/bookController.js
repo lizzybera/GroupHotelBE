@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createBook = void 0;
+exports.viewBooking = exports.createBook = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 const mainError_1 = require("../error/mainError");
 const bookModel_1 = __importDefault(require("../model/bookModel"));
@@ -37,8 +37,22 @@ const createBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     catch (error) {
         res.status(mainError_1.HTTP.BAD_REQUEST).json({
             message: "Error booking room",
-            data: error.message,
         });
     }
 });
 exports.createBook = createBook;
+const viewBooking = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const booked = yield bookModel_1.default.find();
+        return res.status(200).json({
+            message: "success",
+            data: booked
+        });
+    }
+    catch (error) {
+        res.status(mainError_1.HTTP.BAD_REQUEST).json({
+            message: "Error viewing booked room",
+        });
+    }
+});
+exports.viewBooking = viewBooking;

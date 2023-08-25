@@ -54,6 +54,7 @@ export const createRoom = async (req: any, res: Response) => {
 
 export const viewRooms = async (req: Request, res: Response) => {
   try {
+    
     const room = await roomModel.find();
 
     res.status(HTTP.OK).json({
@@ -63,6 +64,31 @@ export const viewRooms = async (req: Request, res: Response) => {
   } catch (error : any) {
     res.status(HTTP.BAD_REQUEST).json({
       message: "Error viewing rooms",
+    });
+  }
+};
+
+export const viewAdminRooms = async (req: any, res: Response) => {
+  try {
+    const { adminID } = req.params;
+
+    const admin: any = await adminModel.findById(adminID).populate({
+      path: "room",
+      options: {
+        sort: {
+          createdAt: -1,
+        },
+      },
+    });
+
+    res.status(201).json({
+      message: "admin's Room  ",
+      data: admin,
+    });
+  } catch (error : any) {
+    res.status(404).json({
+      message: "Error Found",
+      data: error.message,
     });
   }
 };

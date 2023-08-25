@@ -9,5 +9,6 @@ const multer_1 = __importDefault(require("../config/multer"));
 const router = express_1.default.Router();
 router.route("/:adminID/createRoom").post(multer_1.default, roomController_1.createRoom);
 router.route("/viewRooms").get(roomController_1.viewRooms);
+router.route("/:adminID/viewAdminRooms").get(roomController_1.viewAdminRooms);
 router.route("/:roomID/view").get(roomController_1.viewOneRoom);
 exports.default = router;
